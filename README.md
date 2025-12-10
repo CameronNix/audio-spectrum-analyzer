@@ -1,4 +1,4 @@
-# 🎧 Real-Time Audio Spectrum Analyzer (FFT)
+# Real-Time Audio Spectrum Analyzer (FFT)
 
 This project is a **real-time audio spectrum analyzer** built in Python using the **Fast Fourier Transform (FFT)**.
 
@@ -13,23 +13,23 @@ I built this project to explore practical **digital signal processing**, **Fouri
 
 ---
 
-## 🔍 Features
+## Features
 
-- 🎙️ **Live microphone audio input**
-- ⚡ Real-time **FFT** using `numpy.fft.rfft`
-- 🪟 **Blackman windowing** to reduce spectral leakage
-- 📉 **Exponential smoothing** for clean, stable visuals
-- 📈 **Log-magnitude scaling** (used in professional analyzers)
-- 🎚️ **Band energy bars**:
+- **Live microphone audio input**
+- Real-time **FFT** using `numpy.fft.rfft`
+- **Blackman windowing** to reduce spectral leakage
+- **Exponential smoothing** for clean, stable visuals
+- **Log-magnitude scaling** (used in professional analyzers)
+- **Band energy bars**:
   - **Bass:** 20–250 Hz  
   - **Mid:** 250–2000 Hz  
   - **Treble:** 2000–5000 Hz  
-- 🎯 Real-time **peak frequency detection** displayed in the window title
-- 📊 Dynamic visualization with `matplotlib`
+- Real-time **peak frequency detection** displayed in the window title
+- Dynamic visualization with `matplotlib`
 
 ---
 
-## 🧠 How It Works
+## How It Works
 
 1. Microphone audio is sampled at a fixed **sample rate** (44.1 kHz).
 2. Samples are grouped into blocks defined by `block_size`.
@@ -44,7 +44,7 @@ I built this project to explore practical **digital signal processing**, **Fouri
 
 ---
 
-## 🛠️ Tech Stack
+## Tech Stack
 
 - **Language:** Python 3.10  
 - **Libraries:**
@@ -54,7 +54,7 @@ I built this project to explore practical **digital signal processing**, **Fouri
 
 ---
 
-## 🚀 Getting Started
+## Getting Started
 
 ### 1. Install Dependencies
 
@@ -76,7 +76,7 @@ Speak, clap, whistle, or play music — the analyzer reacts instantly.
 
 ---
 
-## 🎛️ Tunable Parameters
+## Tunable Parameters
 
 ### Sample Rate
     sample_rate = 44100
@@ -102,7 +102,7 @@ Speak, clap, whistle, or play music — the analyzer reacts instantly.
 
 ---
 
-## 🧾 What I Learned
+## What I Learned
 
 - How to capture and process real-time audio streams  
 - How the FFT converts signals from time-domain to frequency-domain  
@@ -113,7 +113,7 @@ Speak, clap, whistle, or play music — the analyzer reacts instantly.
 
 ---
 
-## 🔮 Future Improvements
+## Future Improvements
 
 - Spectrogram mode (frequency vs time heatmap)  
 - WAV-file analysis instead of microphone-only input  
