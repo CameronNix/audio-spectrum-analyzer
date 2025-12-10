@@ -1,164 +1,124 @@
-**Real-Time Audio Spectrum Analyzer (FFT)**
+# 🎧 Real-Time Audio Spectrum Analyzer (FFT)
 
-This project is a real-time audio spectrum analyzer built in Python using the Fast Fourier Transform (FFT).
+This project is a **real-time audio spectrum analyzer** built in Python using the **Fast Fourier Transform (FFT)**.
 
-It captures audio from the microphone, computes the frequency spectrum in real time, and visualizes:
+It captures audio from the **microphone**, computes the frequency spectrum in real time, and visualizes:
 
-A smoothed FFT spectrum (0–5 kHz)
+- A smoothed **FFT spectrum** (0–5 kHz)
+- **Log-scale magnitude** for clean readability
+- Real-time **peak frequency detection**
+- Separate **Bass / Mid / Treble** band levels using live bar meters
 
-Log-scale magnitude (cleaner + more readable)
+I built this project to explore practical **digital signal processing**, **Fourier transforms**, and **real-time data visualization**.
 
-Real-time peak frequency detection
+---
 
-Separate Bass / Mid / Treble band levels with live bar meters
+## 🔍 Features
 
-I built this as a freshman Electrical & Computer Engineering student to learn practical digital signal processing, Fourier transforms, and real-time data visualization.
+- 🎙️ **Live microphone audio input**
+- ⚡ Real-time **FFT** using `numpy.fft.rfft`
+- 🪟 **Blackman windowing** to reduce spectral leakage
+- 📉 **Exponential smoothing** for clean, stable visuals
+- 📈 **Log-magnitude scaling** (used in professional analyzers)
+- 🎚️ **Band energy bars**:
+  - **Bass:** 20–250 Hz  
+  - **Mid:** 250–2000 Hz  
+  - **Treble:** 2000–5000 Hz  
+- 🎯 Real-time **peak frequency detection** displayed in the window title
+- 📊 Dynamic visualization with `matplotlib`
 
-**Features**
+---
 
-Live microphone audio input
+## 🧠 How It Works
 
-Real-time FFT using numpy.fft.rfft
+1. Microphone audio is sampled at a fixed **sample rate** (44.1 kHz).
+2. Samples are grouped into blocks defined by `block_size`.
+3. Each block is multiplied by a **Blackman window** to reduce edge artifacts.
+4. The **FFT** converts the time-domain samples into frequency bins.
+5. Magnitudes are:
+   - Smoothed using an exponential moving average  
+   - Converted to **log scale** to reveal quiet frequencies
+6. Frequencies are grouped into **Bass**, **Mid**, and **Treble** bands.
+7. The spectrum curve and band-level bars update continuously in real time.
+8. The highest-energy frequency bin is labeled as the **peak frequency**.
 
-Blackman windowing to reduce spectral leakage
+---
 
-Exponential smoothing for clean visuals (less jitter)
+## 🛠️ Tech Stack
 
-Log-magnitude scaling (like professional audio analyzers)
+- **Language:** Python 3.10  
+- **Libraries:**
+  - `numpy` — FFT and numerical processing  
+  - `sounddevice` — real-time microphone capture  
+  - `matplotlib` — live plotting  
 
-Band energy bars:
+---
 
-Bass: 20–250 Hz
+## 🚀 Getting Started
 
-Mid: 250–2000 Hz
+### 1. Install Dependencies
 
-Treble: 2000–5000 Hz
+    pip install numpy matplotlib sounddevice
 
-Real-time peak frequency readout displayed in the window title
+Use Python 3.10 or similar for best compatibility.
 
-Built using matplotlib for dynamic live plotting
+### 2. Run the Analyzer
 
-**How It Works**
+    python realtime_fft.py
 
-Microphone samples are captured at a fixed sample rate (44.1 kHz).
+The window will show:
 
-Audio is divided into blocks of block_size samples.
+- A real-time FFT spectrum  
+- Three band meters (Bass / Mid / Treble)  
+- A live peak frequency (Hz)
 
-Each audio block is multiplied by a window function (Blackman) to reduce artifacts.
+Speak, clap, whistle, or play music — the analyzer reacts instantly.
 
-The FFT is computed:
+---
 
-X[k]=n=0∑N−1​x[n]e−j2πnk/N
+## 🎛️ Tunable Parameters
 
-Magnitudes are:
+### Sample Rate
+    sample_rate = 44100
 
-Smoothed over time (exponential moving average)
+### FFT Block Size
+    block_size = 1024
 
-Converted to log scale so quieter frequencies are visible
+- Smaller = faster response  
+- Larger = better frequency detail  
 
-Frequency bins are classified into Bass, Mid, and Treble bands.
+### Smoothing Factor
+    alpha = 0.4
 
-A live graph updates:
+- 0.1 → very smooth  
+- 0.8 → very reactive  
 
-The FFT curve (spectrum)
+### Frequency Bands
+    bands = [
+        ("Bass",   20,   250),
+        ("Mid",    250,  2000),
+        ("Treble", 2000, 5000),
+    ]
 
-A bar chart of the band energy levels
+---
 
-The dominant frequency is displayed in real time.
+## 🧾 What I Learned
 
-**Tech Stack**
+- How to capture and process real-time audio streams  
+- How the FFT converts signals from time-domain to frequency-domain  
+- Why Blackman and Hann windows improve spectral accuracy  
+- How to compute and visualize band energy levels  
+- How smoothing and log-scaling improve real-time displays  
+- Techniques for building dynamic visualizations in Python  
 
-Language: Python 3.10
-Libraries used:
+---
 
-numpy — FFT + numerical computing
+## 🔮 Future Improvements
 
-sounddevice — microphone input
+- Spectrogram mode (frequency vs time heatmap)  
+- WAV-file analysis instead of microphone-only input  
+- Basic digital filters (low-pass, high-pass, band-pass)  
+- Option to record data and export for plotting  
+- GUI controls for selecting device, sample rate, etc.  
 
-matplotlib — real-time plotting
-
-(optional) scipy for filters or spectrograms later
-
-**Getting Started**
-*Install Dependencies*
-
-Make sure you are using Python 3.10 or similar. Then install:
-
-pip install numpy matplotlib sounddevice
-
-
-(If using PyCharm, install these in your project interpreter.)
-
-*Run the Analyzer*
-python realtime_fft.py
-
-
-A window will open showing:
-
-Live FFT spectrum
-
-Bass/Mid/Treble meters
-
-Peak frequency in Hz
-
-Talk, clap, whistle, or play music — the analyzer reacts instantly.
-
-**Tunable Parameters**
-
-Inside realtime_fft.py, you can adjust:
-
-*Sample rate*
-sample_rate = 44100
-
-*FFT block size*
-block_size = 1024
-
-
-Smaller = more responsive,
-Larger = smoother but slower.
-
-*Smoothing factor*
-alpha = 0.4
-
-
-0.1 → very smooth
-
-0.8 → very reactive
-
-*Band definitions*
-bands = [
-    ("Bass",   20,   250),
-    ("Mid",    250,  2000),
-    ("Treble", 2000, 5000),
-]
-
-
-**What I Learned**
-
-Through this project, I gained experience in:
-
-Real-time audio processing
-
-Using FFT to transform signals to the frequency domain
-
-Windowing techniques (Blackman/Hann)
-
-Smoothing and visualization filtering
-
-Frequency band analysis (bass/mid/treble separation)
-
-Real-time graphing in Python
-
-Understanding microphone input streams
-
-**Future Improvements**
-
-Add a spectrogram view (heatmap over time)
-
-Analyze .wav files instead of live mic
-
-Add filters (low-pass, high-pass, band-pass)
-
-Log band levels to CSV for plotting later
-
-Package the analyzer into a GUI app
+---
