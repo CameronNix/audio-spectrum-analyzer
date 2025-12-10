@@ -122,3 +122,12 @@ Speak, clap, whistle, or play music — the analyzer reacts instantly.
 - GUI controls for selecting device, sample rate, etc.  
 
 ---
+
+# About Me
+
+I'm a first-year Electrical and Computer Engineering student at **Oregon State University**, currently exploring hands-on projects in *signal processing*, *embedded systems*, and *Python development*.
+This project is part of my journey into building real-time systems and understanding how software and hardware interact.
+
+I'm actively growing my skills through self-driven projects like this FFT analyzer and an environmental sensor node.
+
+Feel free to connect with me on Linkedin (https://www.linkedin.com/in/cameron-nix-5bb678371/) More projects to come!
