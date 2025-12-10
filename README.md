@@ -1,3 +1,5 @@
+<img src="demo.png" width="700">
+
 # Real-Time Audio Spectrum Analyzer (FFT)
 
 This project is a **real-time audio spectrum analyzer** built in Python using the **Fast Fourier Transform (FFT)**.
