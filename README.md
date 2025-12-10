@@ -1,4 +1,3 @@
-<img src="demo.png" width="700">
 
 # Real-Time Audio Spectrum Analyzer (FFT)
 
